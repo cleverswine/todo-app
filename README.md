@@ -64,3 +64,4 @@ Features:
 - use tailwind css and default to dark mode
 - when completing or deleting a todo item, fade out the item
 - ability to export a todo item to pdf using pdfmake - documentation is at https://pdfmake.github.io/docs/0.3/
+- a docker and docker compose file that will allow the application to run in a container

@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+
+# Build output (we rebuild in Docker)
+build/
+.svelte-kit/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+AGENTS.md
+*.md
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# SQLite database files (we create fresh in container)
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test files
+*.test.*
+*.spec.*
+__tests__/
+coverage/
+
+# Environment files (secrets should be passed via Docker env vars)
+.env
+.env.*
+
+# TypeScript build info
+*.tsbuildinfo

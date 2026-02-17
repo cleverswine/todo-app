@@ -2,22 +2,13 @@
 
 This simple todo application was created with the help of Copilot using Claude Opus 4.5
 
-## sv
+## Screenshot
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
-
-## Creating a project
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier tailwindcss="plugins:typography,forms" drizzle="database:sqlite+sqlite:better-sqlite3" mcp="ide:vscode+setup:remote" --install npm todo-app
-```
+![alt text](image.png)
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```sh
 npm run dev
@@ -80,6 +71,17 @@ docker compose down -v
 # Restart without rebuilding
 docker compose restart
 ```
+
+## From Scratch
+
+To recreate this project, start with [`sv`](https://github.com/sveltejs/cli)
+
+```sh
+# recreate this project
+npx sv create --template minimal --types ts --add prettier tailwindcss="plugins:typography,forms" drizzle="database:sqlite+sqlite:better-sqlite3" mcp="ide:vscode+setup:remote" --install npm todo-app
+```
+
+and then point your agent to the instructions below.
 
 ## Agent Instructions
 

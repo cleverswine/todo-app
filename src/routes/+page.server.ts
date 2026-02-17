@@ -47,7 +47,7 @@ export const actions: Actions = {
 		const contractorHired = formData.get('contractorHired') === 'on' ? 1 : 0;
 		const contractorName = formData.get('contractorName')?.toString().trim() || null;
 		const contractorDetails = formData.get('contractorDetails')?.toString().trim() || null;
-		
+
 		// Parse cost field - convert dollars to cents for storage
 		const costStr = formData.get('cost')?.toString().trim();
 		const cost = costStr ? Math.round(parseFloat(costStr) * 100) : null;
@@ -90,7 +90,7 @@ export const actions: Actions = {
 		const contractorHired = formData.get('contractorHired') === 'on' ? 1 : 0;
 		const contractorName = formData.get('contractorName')?.toString().trim() || null;
 		const contractorDetails = formData.get('contractorDetails')?.toString().trim() || null;
-		
+
 		const costStr = formData.get('cost')?.toString().trim();
 		const cost = costStr ? Math.round(parseFloat(costStr) * 100) : null;
 
@@ -124,10 +124,7 @@ export const actions: Actions = {
 			return fail(400, { error: 'Todo ID is required' });
 		}
 
-		await db
-			.update(todo)
-			.set({ completed: 1, updatedAt: Date.now() })
-			.where(eq(todo.id, id));
+		await db.update(todo).set({ completed: 1, updatedAt: Date.now() }).where(eq(todo.id, id));
 
 		return { success: true };
 	},
@@ -143,10 +140,7 @@ export const actions: Actions = {
 			return fail(400, { error: 'Todo ID is required' });
 		}
 
-		await db
-			.update(todo)
-			.set({ completed: 0, updatedAt: Date.now() })
-			.where(eq(todo.id, id));
+		await db.update(todo).set({ completed: 0, updatedAt: Date.now() }).where(eq(todo.id, id));
 
 		return { success: true };
 	},
@@ -185,9 +179,7 @@ export const actions: Actions = {
 
 			// Update each todo's sortOrder in parallel for efficiency
 			await Promise.all(
-				order.map(({ id, sortOrder }) =>
-					db.update(todo).set({ sortOrder }).where(eq(todo.id, id))
-				)
+				order.map(({ id, sortOrder }) => db.update(todo).set({ sortOrder }).where(eq(todo.id, id)))
 			);
 
 			return { success: true };

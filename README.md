@@ -41,6 +41,7 @@ You can preview the production build with `npm run preview`.
 ### First-time Setup
 
 1. Build and start the container:
+
    ```sh
    docker compose up -d --build
    ```
@@ -59,6 +60,7 @@ docker compose up -d --build
 ```
 
 This will:
+
 - Rebuild the Docker image with your changes
 - Restart the container with the new image
 - Preserve your existing database data
@@ -86,10 +88,11 @@ Build a todo application using SvelteKit 5 with Svelte 5 runes, Drizzle ORM, SQL
 ### Database Schema
 
 Create a `todo` table in SQLite with the following fields:
+
 - `id` - text primary key (UUID generated via crypto.randomUUID())
 - `title` - text, required
 - `description` - text, optional
-- `notes` - text, optional  
+- `notes` - text, optional
 - `contractor_hired` - integer (0/1 boolean), required, default 0
 - `contractor_name` - text, optional
 - `contractor_details` - text, optional
@@ -102,10 +105,11 @@ Create a `todo` table in SQLite with the following fields:
 ### Server Actions
 
 Implement the following form actions in `+page.server.ts`:
+
 - `create` - add new todo with next sort order
 - `update` - edit existing todo fields
 - `complete` - mark todo as completed
-- `restore` - mark completed todo as not completed  
+- `restore` - mark completed todo as not completed
 - `delete` - remove todo from database
 - `reorder` - update sort_order values after drag-drop (accepts JSON array of {id, sortOrder})
 
@@ -160,7 +164,7 @@ Implement the following form actions in `+page.server.ts`:
 
 ### Key Implementation Details
 
-- Use Svelte 5 runes: `$state()`, `$derived()`, `$props()` 
+- Use Svelte 5 runes: `$state()`, `$derived()`, `$props()`
 - Use `{@render children()}` instead of `<slot/>`
 - Form submissions use SvelteKit's `enhance` for progressive enhancement
 - Currency helper functions: `formatCurrency(cents)` and `centsToDollars(cents)`

@@ -16,22 +16,26 @@ services:
     # Container name for easier reference
     container_name: todo-app
 
-    # Map port 3000 in container to port 3000 on host
-    # Change the first number to use a different host port (e.g., 8080:3000)
-    ports:
-      - '3000:3000'
-
-    # Persist SQLite database outside the container
-    # This ensures data survives container restarts/rebuilds
-    volumes:
-      - todo-data:/app/data
-
-    # Environment variables
+    # Environment variables used inside the container (e.g., for database path)
     environment:
       - NODE_ENV=production
       - PORT=3000
       - HOST=0.0.0.0
-      - DATABASE_URL=/app/data/todos.db
+      - DATABASE_URL=/app/data/${DATABASE_NAME}
+
+    # Load environment variables from .env file
+    env_file:
+      - .env
+
+    # Map port 3000 in container to port 3000 on host
+    # Change the first number to use a different host port (e.g., 8080:3000)
+    ports:
+      - '${EXTERNAL_PORT}:3000'
+
+    # Persist SQLite database outside the container
+    # This ensures data survives container restarts/rebuilds
+    volumes:
+      - ${DATABASE_EXTERNAL_PATH}:/app/data
 
     # Restart policy - restart unless explicitly stopped
     restart: unless-stopped
@@ -43,8 +47,3 @@ services:
       timeout: 3s
       start_period: 5s
       retries: 3
-
-# Named volume for persistent data storage
-volumes:
-  todo-data:
-    driver: local

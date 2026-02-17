@@ -31,15 +31,21 @@ You can preview the production build with `npm run preview`.
 
 ### First-time Setup
 
-1. Build and start the container:
+1. Copy `.env.example` to `.env` and update as needed. Create any directories that don't exist.
+
+   ```sh
+   cp .env.example .env
+   source .env
+   mkdir -p $DATABASE_EXTERNAL_PATH
+   ```
+
+2. Build and start the container:
 
    ```sh
    docker compose up -d --build
    ```
 
-2. The application will be available at http://localhost:3000
-
-3. The SQLite database is persisted in the `./data` directory on your host machine.
+3. The SQLite database is persisted in the `${DATABASE_EXTERNAL_PATH}` directory on your host machine.
 
 ### Updating After Code Changes
 
